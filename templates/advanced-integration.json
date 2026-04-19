@@ -1,0 +1,237 @@
+{
+  "workflow": {
+    "name": "Advanced Multi-Service Integration",
+    "description": "Enterprise-grade integration with multiple APIs and services",
+    "version": "2.0.0",
+    "mastery_required": "expert",
+    "estimated_duration": "30 minutes",
+    "steps": [
+      {
+        "id": "step_1_services",
+        "name": "Select Services to Integrate",
+        "skill": "credential-manager",
+        "action": "register_services",
+        "description": "Choose which services to integrate with your store",
+        "params": {
+          "service_categories": {
+            "payment": [
+              "stripe",
+              "paypal",
+              "square",
+              "razorpay"
+            ],
+            "analytics": [
+              "google_analytics",
+              "mixpanel",
+              "amplitude",
+              "similarweb"
+            ],
+            "marketing": [
+              "mailchimp",
+              "klaviyo",
+              "hubspot",
+              "zendesk"
+            ],
+            "cloud": [
+              "aws",
+              "google_cloud",
+              "azure"
+            ],
+            "content": [
+              "openai",
+              "anthropic",
+              "hugging_face"
+            ],
+            "collaboration": [
+              "google_workspace",
+              "slack",
+              "discord"
+            ]
+          }
+        },
+        "user_input": true
+      },
+      {
+        "id": "step_2_credentials",
+        "name": "Configure Credentials",
+        "skill": "credential-manager",
+        "action": "add_credentials",
+        "description": "Add API keys and credentials for selected services",
+        "params": {
+          "credential_types": {
+            "api_key": {
+              "label": "API Key",
+              "mastery": "developer",
+              "rotation": "quarterly"
+            },
+            "secret_key": {
+              "label": "Secret Key",
+              "mastery": "expert",
+              "rotation": "monthly"
+            },
+            "oauth_token": {
+              "label": "OAuth Token",
+              "mastery": "expert",
+              "rotation": "on_demand"
+            },
+            "webhook_secret": {
+              "label": "Webhook Secret",
+              "mastery": "expert",
+              "rotation": "quarterly"
+            }
+          }
+        },
+        "user_input": true
+      },
+      {
+        "id": "step_3_webhooks",
+        "name": "Setup Webhooks",
+        "skill": "credential-manager",
+        "action": "configure_webhooks",
+        "description": "Configure webhooks for real-time event handling",
+        "params": {
+          "webhook_events": {
+            "payment": [
+              "payment.success",
+              "payment.failed",
+              "payment.refunded"
+            ],
+            "customer": [
+              "customer.created",
+              "customer.updated",
+              "customer.deleted"
+            ],
+            "order": [
+              "order.created",
+              "order.shipped",
+              "order.delivered"
+            ]
+          }
+        },
+        "user_input": true
+      },
+      {
+        "id": "step_4_automation",
+        "name": "Create Automation Rules",
+        "skill": "workflow-orchestrator",
+        "action": "create_automation_rules",
+        "description": "Setup automated workflows triggered by events",
+        "params": {
+          "automation_templates": [
+            {
+              "name": "Send confirmation email on payment",
+              "trigger": "payment.success",
+              "actions": [
+                {
+                  "skill": "mailchimp",
+                  "action": "send_email",
+                  "template": "payment_confirmation"
+                }
+              ]
+            },
+            {
+              "name": "Generate sales report daily",
+              "trigger": "schedule:daily:9am",
+              "actions": [
+                {
+                  "skill": "excel-generator",
+                  "action": "generate_report",
+                  "template": "daily_sales"
+                },
+                {
+                  "skill": "gws",
+                  "action": "upload_to_sheets"
+                }
+              ]
+            },
+            {
+              "name": "Analyze competitors weekly",
+              "trigger": "schedule:weekly:monday:9am",
+              "actions": [
+                {
+                  "skill": "similarweb",
+                  "action": "analyze_competitors"
+                },
+                {
+                  "skill": "excel-generator",
+                  "action": "create_report"
+                }
+              ]
+            }
+          ]
+        },
+        "user_input": true
+      },
+      {
+        "id": "step_5_monitoring",
+        "name": "Setup Monitoring & Alerts",
+        "skill": "credential-manager",
+        "action": "configure_monitoring",
+        "description": "Configure real-time monitoring and alerting",
+        "params": {
+          "monitoring_metrics": [
+            {
+              "metric": "api_errors",
+              "threshold": 10,
+              "window": "1 hour",
+              "action": "alert_admin"
+            },
+            {
+              "metric": "payment_failures",
+              "threshold": 5,
+              "window": "1 hour",
+              "action": "alert_admin"
+            },
+            {
+              "metric": "credential_expiration",
+              "days_before": 7,
+              "action": "notify_user"
+            }
+          ]
+        },
+        "user_input": false
+      },
+      {
+        "id": "step_6_testing",
+        "name": "Test Integrations",
+        "skill": "workflow-orchestrator",
+        "action": "run_integration_tests",
+        "description": "Test all integrations with sample data",
+        "params": {
+          "test_scenarios": [
+            "payment_processing",
+            "webhook_delivery",
+            "email_sending",
+            "api_rate_limits",
+            "error_handling"
+          ]
+        },
+        "user_input": false
+      },
+      {
+        "id": "step_7_deploy",
+        "name": "Deploy to Production",
+        "skill": "webdev",
+        "action": "deploy_production",
+        "description": "Deploy integrations to production environment",
+        "params": {
+          "deployment_config": {
+            "environment": "production",
+            "monitoring": true,
+            "rollback_enabled": true,
+            "backup_before_deploy": true
+          }
+        },
+        "user_input": false
+      }
+    ],
+    "success_message": "✅ All integrations configured and deployed successfully!",
+    "next_steps": [
+      "Monitor integration health",
+      "Optimize API usage and rate limits",
+      "Setup advanced analytics dashboards",
+      "Configure backup and disaster recovery",
+      "Schedule regular security audits"
+    ]
+  }
+}

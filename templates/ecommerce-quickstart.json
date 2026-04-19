@@ -1,0 +1,215 @@
+{
+  "workflow": {
+    "name": "Quick E-Commerce Store Setup",
+    "description": "Complete e-commerce platform setup in 5 minutes",
+    "version": "1.0.0",
+    "mastery_required": "beginner",
+    "estimated_duration": "5 minutes",
+    "steps": [
+      {
+        "id": "step_1_template",
+        "name": "Select Store Template",
+        "skill": "webdev",
+        "action": "create_store",
+        "description": "Choose from pre-built templates (Shopify-like, Etsy-like, B2B)",
+        "params": {
+          "templates": [
+            {
+              "id": "shopify-like",
+              "name": "Shopify-like Store",
+              "description": "Full-featured marketplace with inventory management",
+              "features": ["products", "cart", "checkout", "orders", "customers"]
+            },
+            {
+              "id": "etsy-like",
+              "name": "Etsy-like Marketplace",
+              "description": "Multi-seller marketplace platform",
+              "features": ["sellers", "products", "reviews", "messaging"]
+            },
+            {
+              "id": "b2b",
+              "name": "B2B Store",
+              "description": "Business-to-business sales platform",
+              "features": ["bulk_orders", "quotes", "invoicing", "payment_terms"]
+            }
+          ]
+        },
+        "user_input": true
+      },
+      {
+        "id": "step_2_branding",
+        "name": "Configure Store Branding",
+        "skill": "webdev",
+        "action": "configure_store",
+        "description": "Set store name, logo, colors, and basic info",
+        "params": {
+          "fields": [
+            {
+              "name": "store_name",
+              "type": "text",
+              "label": "Store Name",
+              "placeholder": "My Awesome Store"
+            },
+            {
+              "name": "store_description",
+              "type": "textarea",
+              "label": "Store Description",
+              "placeholder": "Brief description of your store"
+            },
+            {
+              "name": "logo_url",
+              "type": "file",
+              "label": "Store Logo",
+              "accept": "image/*"
+            },
+            {
+              "name": "primary_color",
+              "type": "color",
+              "label": "Primary Color",
+              "default": "#0891b2"
+            },
+            {
+              "name": "currency",
+              "type": "select",
+              "label": "Currency",
+              "options": ["USD", "EUR", "GBP", "JPY", "AUD", "CAD"]
+            }
+          ]
+        },
+        "user_input": true
+      },
+      {
+        "id": "step_3_payment",
+        "name": "Setup Payment Processing",
+        "skill": "credential-manager",
+        "action": "add_credential",
+        "description": "Connect payment processor (Stripe, PayPal, or Square)",
+        "params": {
+          "services": [
+            {
+              "id": "stripe",
+              "name": "Stripe",
+              "description": "Global payment processing",
+              "keys": ["publishable_key", "secret_key", "webhook_secret"],
+              "setup_url": "https://dashboard.stripe.com"
+            },
+            {
+              "id": "paypal",
+              "name": "PayPal",
+              "description": "PayPal payment processing",
+              "keys": ["client_id", "secret"],
+              "setup_url": "https://developer.paypal.com"
+            },
+            {
+              "id": "square",
+              "name": "Square",
+              "description": "Square payment processing",
+              "keys": ["access_token", "application_id"],
+              "setup_url": "https://developer.squareup.com"
+            }
+          ]
+        },
+        "user_input": true
+      },
+      {
+        "id": "step_4_products",
+        "name": "Import Products",
+        "skill": "excel-generator",
+        "action": "import_products",
+        "description": "Add products via CSV upload or manual entry",
+        "params": {
+          "import_methods": [
+            {
+              "method": "csv",
+              "label": "CSV Upload",
+              "template_url": "/templates/products-template.csv",
+              "fields": ["name", "description", "price", "sku", "image_url", "category"]
+            },
+            {
+              "method": "manual",
+              "label": "Manual Entry",
+              "fields": ["name", "description", "price", "sku", "image_url", "category"]
+            }
+          ]
+        },
+        "user_input": true
+      },
+      {
+        "id": "step_5_content",
+        "name": "Auto-Generate Product Content",
+        "skill": "video-generator",
+        "action": "generate_product_content",
+        "description": "AI-generate product descriptions, images, and videos",
+        "params": {
+          "content_types": [
+            {
+              "type": "description",
+              "skill": "openai",
+              "prompt": "Generate compelling product description for {product_name}"
+            },
+            {
+              "type": "marketing_copy",
+              "skill": "bgm-prompter",
+              "prompt": "Create persuasive marketing copy for {product_name}"
+            },
+            {
+              "type": "demo_video",
+              "skill": "video-generator",
+              "duration": "30-60 seconds",
+              "style": "professional"
+            },
+            {
+              "type": "background_music",
+              "skill": "bgm-prompter",
+              "mood": "uplifting",
+              "duration": "match_video"
+            }
+          ]
+        },
+        "optional": true
+      },
+      {
+        "id": "step_6_deploy",
+        "name": "Deploy Store",
+        "skill": "webdev",
+        "action": "deploy",
+        "description": "Deploy your store to production with auto-generated domain",
+        "params": {
+          "deployment_options": {
+            "domain": "auto-generated",
+            "ssl": true,
+            "cdn": true,
+            "monitoring": true,
+            "backups": "daily"
+          }
+        },
+        "user_input": false
+      },
+      {
+        "id": "step_7_verification",
+        "name": "Verify Setup",
+        "skill": "webdev",
+        "action": "verify_setup",
+        "description": "Test store functionality and go live",
+        "params": {
+          "checks": [
+            "payment_processing",
+            "product_display",
+            "checkout_flow",
+            "order_confirmation",
+            "email_notifications"
+          ]
+        },
+        "user_input": false
+      }
+    ],
+    "success_message": "🎉 Your e-commerce store is live! Visit your store at: {store_url}",
+    "next_steps": [
+      "Customize store theme and design",
+      "Setup email marketing campaigns",
+      "Configure inventory management",
+      "Enable customer reviews and ratings",
+      "Setup shipping and tax calculation"
+    ]
+  }
+}
