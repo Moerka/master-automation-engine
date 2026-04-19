@@ -623,3 +623,14 @@ Personal AI helper for everything:
 **Master Automation Engine** — *Create Anything. Earn Everything. Completely Free.*
 
 *Trusted by 100K+ creators. $500M+ in combined earnings. 0 lines of code required.*
+
+## Advanced Authentication
+
+This skill uses advanced GitHub authentication with:
+- JWT Token Management
+- Encrypted Secret Vault
+- GitHub App Integration
+- Permission Scoping
+- Audit Logging
+
+See ADVANCED_AUTH_GUIDE.md for details.
